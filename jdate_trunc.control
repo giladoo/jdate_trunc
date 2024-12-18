@@ -1,0 +1,5 @@
+# Extension metadata
+comment = 'jdate_trunc with PL/Python functions'
+default_version = '1.0'
+relocatable = true
+schema = public
