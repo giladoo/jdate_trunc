@@ -1,5 +1,6 @@
 # Extension metadata
 comment = 'jdate_trunc with PL/Python functions'
-default_version = '1.1'
+default_version = '1.2'
 relocatable = false
 schema = public
+comment = 'pip install jdatetime jdatetimext'
