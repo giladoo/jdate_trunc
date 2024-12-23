@@ -15,15 +15,9 @@ CREATE OR REPLACE FUNCTION jdate_trunc(variable text, date_value timestamp witho
 AS $$
 # It will return the same date_value if jdatetimext has not installed
 
-import pip
 try:
-    from jdatetimext import jdatetrunc
-except:
-    pip.main(['install', 'jdatetimext'])
-
-try:
-    from jdatetimext import jdate_trunc
-    res = jdate_trunc(variable, date_value)
+    from jdatetimext import j_start
+    res = j_start(variable, date_value)
 except:
     res = date_value
 return res
