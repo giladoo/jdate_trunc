@@ -10,20 +10,27 @@ DO $$ BEGIN
 END $$;
 
 -- Create jdate_trunc function
-CREATE OR REPLACE FUNCTION jdate_trunc(variable text, date_value timestamp without time zone)
-  RETURNS timestamp without time zone
+CREATE OR REPLACE FUNCTION jdate_trunc(variable TEXT, date_value TIMESTAMP WITHOUT TIME ZONE)
+RETURNS  TIMESTAMP WITHOUT TIME ZONE
 AS $$
-	import datetime
-	from jdatetimext import j_start
-    # '2024-10-26 23:00:14.623396' -> '2024-10-26 23:00:14'
-	if type(date_value) == str:
-		s_date_value = date_value.split('.', 1)[0]
-    else:
-		s_date_value = date_value
-	try:
-		res = j_start(variable, s_date_value)
-	except Exception as e:
-		res = e
-	return res
-
+res = None
+if date_value != None:
+    from jdatetimext import j_start
+    try:
+        res = j_start(variable, date_value)
+        res = res if res else None
+    except Exception as e:
+        res = date_value
+return res
 $$ LANGUAGE plpython3u;
+
+
+
+
+
+
+
+
+
+
+
